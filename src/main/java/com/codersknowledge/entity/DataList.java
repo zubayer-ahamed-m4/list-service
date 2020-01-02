@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.codersknowledge.entity;
 
 import java.io.Serializable;
@@ -12,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.codersknowledge.model.AbstractModel;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Zubayer Ahamed
@@ -21,11 +21,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "datalist")
-public class DataList implements Serializable {
+@EqualsAndHashCode(of = {"listId"}, callSuper = false)
+public class DataList extends AbstractModel implements Serializable {
 
-	/**
-	 * Generated Serial version UID
-	 */
 	private static final long serialVersionUID = -1077081327385642788L;
 
 	@Id
@@ -83,4 +81,33 @@ public class DataList implements Serializable {
 	private String listValue21;
 	@Column(name = "listValue22")
 	private String listValue22;
+
+	public DataList mapObject(DataList dataList) {
+		this.listId = dataList.getListId();
+		this.listCode = dataList.getListCode();
+		this.description = dataList.getDescription();
+		this.listValue1 = dataList.getListValue1();
+		this.listValue2 = dataList.getListValue2();
+		this.listValue3 = dataList.getListValue3();
+		this.listValue4 = dataList.getListValue4();
+		this.listValue5 = dataList.getListValue5();
+		this.listValue6 = dataList.getListValue6();
+		this.listValue7 = dataList.getListValue7();
+		this.listValue8 = dataList.getListValue8();
+		this.listValue9 = dataList.getListValue9();
+		this.listValue10 = dataList.getListValue10();
+		this.listValue11 = dataList.getListValue11();
+		this.listValue12 = dataList.getListValue12();
+		this.listValue13 = dataList.getListValue13();
+		this.listValue14 = dataList.getListValue14();
+		this.listValue15 = dataList.getListValue15();
+		this.listValue16 = dataList.getListValue16();
+		this.listValue17 = dataList.getListValue17();
+		this.listValue18 = dataList.getListValue18();
+		this.listValue19 = dataList.getListValue19();
+		this.listValue20 = dataList.getListValue20();
+		this.listValue21 = dataList.getListValue21();
+		this.listValue22 = dataList.getListValue22();
+		return this;
+	}
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.codersknowledge.entity;
 
 import java.io.Serializable;
@@ -15,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.codersknowledge.model.AbstractModel;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Zubayer Ahamed
@@ -24,7 +24,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "listhead")
-public class ListHead implements Serializable {
+@EqualsAndHashCode(of = {"listHeadId"}, callSuper = false)
+public class ListHead extends AbstractModel implements Serializable {
 
 	/**
 	 * Generated Serial Version UID
@@ -74,6 +75,30 @@ public class ListHead implements Serializable {
 	private String prompt15;
 	@Column(name = "prompt16")
 	private String prompt16;
+
+	public ListHead mapObject(ListHead listHead) {
+		this.listHeadId = listHead.getListHeadId();
+		this.listCode = listHead.getListCode();
+		this.description = listHead.getDescription();
+		this.note = listHead.getNote();
+		this.prompt1 = listHead.getPrompt1();
+		this.prompt2 = listHead.getPrompt2();
+		this.prompt3 = listHead.getPrompt3();
+		this.prompt4 = listHead.getPrompt4();
+		this.prompt5 = listHead.getPrompt5();
+		this.prompt6 = listHead.getPrompt6();
+		this.prompt7 = listHead.getPrompt7();
+		this.prompt8 = listHead.getPrompt8();
+		this.prompt9 = listHead.getPrompt9();
+		this.prompt10 = listHead.getPrompt10();
+		this.prompt11 = listHead.getPrompt11();
+		this.prompt12 = listHead.getPrompt12();
+		this.prompt13 = listHead.getPrompt13();
+		this.prompt14 = listHead.getPrompt14();
+		this.prompt15 = listHead.getPrompt15();
+		this.prompt16 = listHead.getPrompt16();
+		return this;
+	}
 
 	@Transient
 	private List<DataList> dataLists = new ArrayList<>();
