@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codersknowledge.entity.DataList;
 import com.codersknowledge.entity.ListHead;
-import com.codersknowledge.model.dto.ListHeadDTO;
 import com.codersknowledge.service.ListService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,20 +30,28 @@ public class ListController {
 
 	@GetMapping
 	public ListHead getObjectSample() {
-		return new ListHead();
+		ListHead lh = new ListHead();
+		lh.getDataLists().add(new DataList());
+		return lh;
 	}
 
 	@PostMapping("/save")
 	public ListHead saveList(@RequestBody ListHead listHead) {
 		listHead = listService.saveListHead(listHead);
-		return listHead;
+		return listHead != null ? listHead : new ListHead();
 	}
 
-	@GetMapping("/{listId}")
-	public DataList getListById(@PathVariable("listId") Long listId) {
-		log.info("Getting list by list id ..... {}", listId);
-		listService.findListByCategory("");
-		return new DataList();
+	@PostMapping("/save/datalist")
+	public DataList saveDataList(@RequestBody DataList dataList) {
+		dataList = listService.saveDataList(dataList);
+		return dataList != null ? dataList : new DataList();
 	}
+
+	@GetMapping("/find/listcode/{listCode}")
+	public ListHead findByListCode(@PathVariable String listCode) {
+		if(listCode == null || listCode.isEmpty()) return new ListHead();
+		return listService.findListByListCode(listCode);
+	}
+
 
 }

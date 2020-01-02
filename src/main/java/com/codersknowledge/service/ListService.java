@@ -3,8 +3,6 @@
  */
 package com.codersknowledge.service;
 
-import java.util.List;
-
 import com.codersknowledge.entity.DataList;
 import com.codersknowledge.entity.ListHead;
 
@@ -16,13 +14,16 @@ public interface ListService {
 
 	public ListHead saveListHead(ListHead listHead);
 
+	public DataList saveDataList(DataList dataList);
+
 	/**
-	 * Find list of DataList by listCode
+	 * Find list by listcode
 	 * 
 	 * @param listCode
-	 * @return {@link List} of {@link DataList}
+	 * @return {@link ListHead}
 	 */
-	public List<DataList> findListByCategory(String listCode);
+	public ListHead findListByListCode(String listCode);
 
 	public boolean listValidate(ListHead listHead);
+	public boolean listValidate(DataList dataList);
 }
